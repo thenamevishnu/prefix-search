@@ -38,10 +38,10 @@ class MainClass{
         let currentNode=this.root
         for(let i=0;i<prefix.length;i++){
             const letter = prefix[i]
-            if(!(letter in currentNode.child)){
+            if(!(letter.toUpperCase() in currentNode.child) && !(letter.toLowerCase() in currentNode.child)){
                 return []
             }
-            currentNode=currentNode.child[letter]
+            currentNode=currentNode.child[letter.toLowerCase()] ? currentNode.child[letter.toLowerCase()] : currentNode.child[letter.toUpperCase()]
         }
         return this.traverse(currentNode,prefix,[])
     }
